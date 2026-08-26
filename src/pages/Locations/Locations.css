@@ -178,6 +178,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .location-details-header {
@@ -240,6 +241,7 @@
   display: flex;
   flex-direction: column;
   padding: 24px;
+  overflow: hidden;
 }
 
 .content-header {
@@ -282,7 +284,8 @@
 /* Table Styles */
 .table-responsive {
   flex: 1;
-  overflow-x: auto;
+  overflow: auto;
+  min-height: 0;
 }
 
 .data-table {
@@ -298,6 +301,9 @@
   color: var(--text-muted);
   border-bottom: 1px solid var(--border-color);
   background: #F9FAFB;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .data-table td {

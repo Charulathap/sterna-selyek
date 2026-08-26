@@ -16,7 +16,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false, toggleSidebar }) => {
   return (
     <aside className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}>
-      <button className="sidebar-edge-toggle" onClick={toggleSidebar} data-tour="sidebar-toggle">
+      <button className="sidebar-edge-toggle" onClick={toggleSidebar}>
         {isCollapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
       </button>
 
@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false, toggleSidebar })
             </NavLink>
           </li>
           <li>
-            <NavLink to="/locations" id="tour-locations" data-tour="sidebar-navigation" className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>
+            <NavLink to="/locations" className={({isActive}) => isActive ? "nav-link active" : "nav-link"}>
               <MapPin size={18} />
               {!isCollapsed && <span>Locations</span>}
             </NavLink>

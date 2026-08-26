@@ -121,3 +121,170 @@ input {
   flex-direction: column;
   gap: 24px;
 }
+
+/* Animated Custom Tooltip */
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #1F2937;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.2s;
+  z-index: 9999;
+  margin-bottom: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+[data-tooltip]:hover::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Shepherd Custom Theme */
+.shepherd-theme-custom {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  padding: 0;
+  font-family: var(--font-family);
+  border: none;
+  z-index: 99999 !important;
+}
+
+.shepherd-theme-custom .shepherd-header {
+  background: transparent;
+  padding: 20px 24px 8px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.shepherd-theme-custom .shepherd-title {
+  color: #1E293B; /* Dark blue/gray */
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.shepherd-theme-custom .shepherd-cancel-icon {
+  color: #94A3B8;
+  font-size: 20px;
+  transition: color 0.2s;
+  padding: 0;
+  margin-top: -4px;
+  margin-right: -4px;
+}
+.shepherd-theme-custom .shepherd-cancel-icon:hover {
+  color: #475569;
+}
+
+.shepherd-theme-custom .shepherd-text {
+  color: #475569;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 0 24px 20px;
+}
+
+.shepherd-theme-custom .shepherd-footer {
+  padding: 0 24px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  border: none;
+  background: transparent;
+  position: relative;
+}
+
+/* Progress dots dynamically injected */
+.shepherd-progress {
+  display: flex;
+  gap: 8px;
+  margin-right: auto; /* Pushes buttons to the right */
+  align-items: center;
+}
+
+.shepherd-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #CBD5E1;
+  background: transparent;
+  transition: all 0.2s;
+}
+
+.shepherd-dot.active {
+  background: var(--primary-blue);
+  border-color: var(--primary-blue);
+}
+
+.shepherd-theme-custom .shepherd-button {
+  background: var(--primary-blue);
+  color: white;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.shepherd-theme-custom .shepherd-button:hover {
+  background: var(--primary-blue-hover);
+}
+
+.shepherd-theme-custom .shepherd-button-secondary {
+  background: #F1F5F9;
+  color: #475569;
+}
+
+.shepherd-theme-custom .shepherd-button-secondary:hover {
+  background: #E2E8F0;
+  color: #1E293B;
+}
+
+.shepherd-theme-custom .shepherd-arrow,
+.shepherd-theme-custom .shepherd-arrow:before {
+  content: "";
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  z-index: -1;
+  background: #ffffff;
+}
+
+/* Tour Transition Overlay */
+.tour-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #F8FAFC;
+  z-index: 999999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tour-transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

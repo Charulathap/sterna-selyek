@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { Search, Bell, LogOut, ChevronDown, ChevronUp, X, CheckCircle, Trash2, Map } from 'lucide-react';
-import { tourManager } from '../../utils/TourManager';
+import { useLocation } from 'react-router-dom';
+import { Search, Bell, LogOut, ChevronDown, ChevronUp, X, CheckCircle, Trash2, BookOpen } from 'lucide-react';
+import { useAppTour } from '../../hooks/useAppTour';
 import './Header.css';
 
 const mockSearchData = [
@@ -19,7 +19,6 @@ const mockSearchData = [
 
 const Header: React.FC = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [notifications, setNotifications] = useState([
@@ -30,6 +29,12 @@ const Header: React.FC = () => {
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [userEmail, setUserEmail] = useState('leo@sternasecurity.com');
   const [userName, setUserName] = useState('Leo');
+  const [showTourHint, setShowTourHint] = useState(false);
+  const { startTour } = useAppTour();
+  
+  useEffect(() => {
+    setShowTourHint(true);
+  }, []);
   
   useEffect(() => {
     const savedEmail = localStorage.getItem('userEmail');
@@ -70,11 +75,7 @@ const Header: React.FC = () => {
     window.location.href = '/login';
   };
 
-  const handleStartTour = () => {
-    setIsDropdownOpen(false);
-    tourManager.init(navigate);
-    tourManager.start();
-  };
+
 
   // Filter search results
   const searchResults = mockSearchData.filter(item => 
@@ -106,7 +107,7 @@ const Header: React.FC = () => {
       </div>
 
       <div className="header-right">
-        <div className="search-container" data-tour="global-search">
+        <div className="search-container">
           <Search size={16} className="search-icon" />
           <input 
             type="text" 
@@ -148,7 +149,6 @@ const Header: React.FC = () => {
         <div className="notification-container" style={{ position: 'relative' }}>
           <button 
             className="notification-btn" 
-            id="tour-notifications"
             onClick={() => setIsNotifOpen(!isNotifOpen)}
           >
             <Bell size={20} color="var(--text-dark)" />
@@ -191,9 +191,20 @@ const Header: React.FC = () => {
         <div className="user-dropdown-container">
           <div 
             className="user-profile-btn" 
-            id="tour-profile" 
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            onClick={() => {
+              setIsDropdownOpen(!isDropdownOpen);
+              if (showTourHint) {
+                setShowTourHint(false);
+              }
+            }}
+            style={{ position: 'relative' }}
           >
+            {showTourHint && (
+              <>
+                <div className="pulse-indicator"></div>
+                <div className="tour-hint-tooltip">Explore the User Guide</div>
+              </>
+            )}
             <div className="user-avatar">{avatarLetter}</div>
             <div className="user-info">
               <div className="user-name">{userName}</div>
@@ -211,12 +222,17 @@ const Header: React.FC = () => {
                   <div className="dropdown-email">{userEmail}</div>
                 </div>
               </div>
-              <button 
-                className="dropdown-tour-btn" 
-                onClick={handleStartTour}
-              >
-                <Map size={16} /> User Guide
+
+              <button className="dropdown-item-btn" onClick={(e) => { 
+                e.preventDefault();
+                e.stopPropagation();
+                setIsDropdownOpen(false); 
+                startTour(); 
+              }}>
+                <BookOpen size={16} /> User Guide
               </button>
+              <div className="dropdown-divider"></div>
+
               <button 
                 className="dropdown-logout-btn" 
                 onClick={handleLogout}

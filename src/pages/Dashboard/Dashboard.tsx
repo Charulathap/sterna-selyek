@@ -242,7 +242,7 @@ const Dashboard: React.FC = () => {
                 ))
               ) : (
                 <>
-                  <button className="quick-action-btn" id="tour-add-location" data-tour="quick-add-location" onClick={handleAddLocationClick}>
+                  <button className="quick-action-btn" onClick={handleAddLocationClick}>
                     <div className="quick-action-icon color-blue"><MapPin size={24} /></div>
                     <span>Add Location</span>
                   </button>
