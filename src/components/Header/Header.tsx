@@ -3,10 +3,6 @@ import { useLocation } from 'react-router-dom';
 import { Search, Bell, LogOut, ChevronDown, ChevronUp, Map, X, CheckCircle, Trash2 } from 'lucide-react';
 import './Header.css';
 
-interface HeaderProps {
-  startTour?: () => void;
-}
-
 const mockSearchData = [
   { id: 1, text: 'Main Entrance Lock', tag: 'Lock', link: '/locations' },
   { id: 2, text: 'Store Room Lock', tag: 'Lock', link: '/locations' },
@@ -20,7 +16,7 @@ const mockSearchData = [
   { id: 10, text: 'Gateways', tag: 'Page', link: '/gateways' }
 ];
 
-const Header: React.FC<HeaderProps> = ({ startTour }) => {
+const Header: React.FC = () => {
   const location = useLocation();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
@@ -70,11 +66,6 @@ const Header: React.FC<HeaderProps> = ({ startTour }) => {
   const handleLogout = () => {
     localStorage.removeItem('userEmail');
     window.location.href = '/login';
-  };
-
-  const handleStartTour = () => {
-    setIsDropdownOpen(false);
-    if (startTour) startTour();
   };
 
   // Filter search results
@@ -212,12 +203,6 @@ const Header: React.FC<HeaderProps> = ({ startTour }) => {
                   <div className="dropdown-email">{userEmail}</div>
                 </div>
               </div>
-              <button 
-                className="dropdown-tour-btn" 
-                onClick={handleStartTour}
-              >
-                <Map size={16} /> User Guide Tour
-              </button>
               <button 
                 className="dropdown-logout-btn" 
                 onClick={handleLogout}
