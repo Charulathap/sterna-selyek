@@ -27,8 +27,8 @@ const Header: React.FC = () => {
   ]);
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [userEmail, setUserEmail] = useState('leo@sternasecurity.com');
-  const [userName, setUserName] = useState('Leo');
+  const [userEmail, setUserEmail] = useState('haru@sternasecurity.com');
+  const [userName, setUserName] = useState('Charu');
   const [showTourHint, setShowTourHint] = useState(false);
   const { startTour } = useAppTour();
   
