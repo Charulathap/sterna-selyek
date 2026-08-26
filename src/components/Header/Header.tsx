@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Search, Bell, LogOut, ChevronDown, ChevronUp, X, CheckCircle, Trash2 } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { Search, Bell, LogOut, ChevronDown, ChevronUp, X, CheckCircle, Trash2, Map } from 'lucide-react';
+import { tourManager } from '../../utils/TourManager';
 import './Header.css';
 
 const mockSearchData = [
@@ -18,6 +19,7 @@ const mockSearchData = [
 
 const Header: React.FC = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [notifications, setNotifications] = useState([
@@ -68,6 +70,12 @@ const Header: React.FC = () => {
     window.location.href = '/login';
   };
 
+  const handleStartTour = () => {
+    setIsDropdownOpen(false);
+    tourManager.init(navigate);
+    tourManager.start();
+  };
+
   // Filter search results
   const searchResults = mockSearchData.filter(item => 
     item.text.toLowerCase().includes(searchQuery.toLowerCase())
@@ -98,7 +106,7 @@ const Header: React.FC = () => {
       </div>
 
       <div className="header-right">
-        <div className="search-container" id="tour-search">
+        <div className="search-container" data-tour="global-search">
           <Search size={16} className="search-icon" />
           <input 
             type="text" 
@@ -114,7 +122,7 @@ const Header: React.FC = () => {
               <X size={14} />
             </button>
           ) : (
-            <span className="search-shortcut">Ctrl + K</span>
+            <span className="search-shortcut"></span>
           )}
           
           {isSearchFocused && searchQuery.length > 0 && (
@@ -203,6 +211,12 @@ const Header: React.FC = () => {
                   <div className="dropdown-email">{userEmail}</div>
                 </div>
               </div>
+              <button 
+                className="dropdown-tour-btn" 
+                onClick={handleStartTour}
+              >
+                <Map size={16} /> User Guide
+              </button>
               <button 
                 className="dropdown-logout-btn" 
                 onClick={handleLogout}

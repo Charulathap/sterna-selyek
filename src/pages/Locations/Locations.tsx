@@ -70,7 +70,7 @@ const Locations: React.FC = () => {
           </div>
         </div>
 
-        <div className="locations-list">
+        <div className="locations-list" data-tour="locations-list">
           {isLoading ? (
             Array(8).fill(0).map((_, i) => (
               <div key={i} className="location-item" style={{display: 'flex', gap: '12px', padding: '16px 20px'}}>
@@ -281,7 +281,7 @@ const Locations: React.FC = () => {
 
       {/* Add Location Modal */}
       {isModalOpen && (
-        <div className="modal-overlay" id="tour-modal">
+        <div className="modal-overlay" id="tour-modal" data-tour="add-location-modal">
           <div className="modal-content card" style={{ maxWidth: '650px' }}>
             <button className="modal-close-icon" onClick={() => setIsModalOpen(false)}>
               <X size={20} />
