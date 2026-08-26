@@ -1,0 +1,340 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  height: 80px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s;
+}
+
+.menu-btn:hover {
+  background-color: var(--bg-body);
+}
+
+.header-title-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.header-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--text-muted);
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 36px;
+  border: 1px solid var(--border-color);
+  border-radius: 40px;
+  font-size: 14px;
+  background-color: #F1F5F9;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(10, 102, 194, 0.1);
+}
+
+.search-shortcut {
+  position: absolute;
+  right: 12px;
+  font-size: 11px;
+  color: var(--text-light);
+  background-color: transparent;
+  padding: 2px 6px;
+  pointer-events: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.search-clear:hover {
+  color: var(--text-dark);
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  padding: 8px 0;
+  z-index: 100;
+}
+
+.search-result-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.search-result-item:hover {
+  background-color: #F8FAFC;
+}
+
+.search-highlight {
+  background-color: #FEF08A;
+  color: #1F2937;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.search-result-text {
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.search-result-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.notification-dropdown {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.notification-actions {
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.notification-item:hover .notification-actions {
+  opacity: 1;
+}
+
+.notification-actions button {
+  color: var(--text-muted);
+}
+
+.notification-actions button:hover {
+  color: var(--text-dark);
+}
+
+.notification-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.notification-btn:hover {
+  background-color: var(--bg-body);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  background-color: var(--status-error);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.user-profile-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 12px 4px 4px;
+  border-radius: 40px;
+  background-color: var(--bg-body);
+  transition: background-color 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+.user-profile-btn:hover {
+  background-color: var(--border-color);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.user-chevron {
+  color: var(--text-muted);
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.user-role {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* User Dropdown */
+.user-dropdown-container {
+  position: relative;
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 260px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  z-index: 100;
+}
+
+.dropdown-user-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 8px;
+}
+
+.dropdown-avatar-lg {
+  background: #64748B;
+  color: white;
+  width: 48px;
+  height: 48px;
+  font-size: 20px;
+}
+
+.dropdown-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.dropdown-email {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.dropdown-tour-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: var(--primary-blue);
+  background-color: var(--primary-light);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.dropdown-tour-btn:hover {
+  background-color: #d8eaff;
+}
+
+.dropdown-logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  color: #EF4444;
+  background-color: #FEE2E2;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-logout-btn:hover {
+  background-color: #FECACA;
+}
