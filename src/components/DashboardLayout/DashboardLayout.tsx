@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import Header from '../Header/Header';
 
 const DashboardLayout: React.FC = () => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
   const [isInitialLoading, setIsInitialLoading] = useState(!sessionStorage.getItem('appLoaded'));
-  const location = useLocation();
 
   useEffect(() => {
     // Skeleton loading logic

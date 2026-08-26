@@ -2,16 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
   LayoutDashboard, 
-  MapPin, 
-  Lock, 
-  Truck, 
-  Wifi, 
-  Car, 
-  Users, 
-  Key, 
-  Layers, 
-  FileText, 
-  Settings,
+  MapPin,
   ChevronLeft,
   ChevronRight
 } from 'lucide-react';

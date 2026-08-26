@@ -3,7 +3,7 @@ import { useOutletContext } from 'react-router-dom';
 import { 
   Search, Plus, ChevronRight, ChevronLeft, Info, 
   Upload, RefreshCw, Edit2, Trash2, Lock, Battery,
-  BatteryMedium, BatteryLow, Wifi, MapPin, Building,
+  MapPin, Building,
   Map, Globe, ChevronDown, AlignLeft, Save, X
 } from 'lucide-react';
 import './Locations.css';

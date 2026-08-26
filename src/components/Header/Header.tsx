@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Search, Bell, LogOut, ChevronDown, ChevronUp, Map, X, CheckCircle, Trash2 } from 'lucide-react';
+import { Search, Bell, LogOut, ChevronDown, ChevronUp, X, CheckCircle, Trash2 } from 'lucide-react';
 import './Header.css';
 
 const mockSearchData = [
